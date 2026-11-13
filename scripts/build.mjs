@@ -125,7 +125,7 @@ const subscription = {
   version,
   author: meta.author,
   updateUrl,
-  checkUpdateUrl: './gkd.version.json5',
+  checkUpdateUrl,
   supportUri,
   categories,
   globalGroups,
