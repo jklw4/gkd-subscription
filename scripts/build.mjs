@@ -100,7 +100,8 @@ const globalGroups = mergeGroups([...(base.globalGroups ?? [])], customGlobal, '
 const owner = meta.owner
 const repo = meta.repo
 const branch = meta.branch ?? 'main'
-const updateUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/dist/gkd.json5`
+// raw.githubusercontent.com 在国内网络经常不可达，主链路走 jsDelivr（每次推送后需 purge 缓存）
+const updateUrl = `https://cdn.jsdelivr.net/gh/${owner}/${repo}@${branch}/dist/gkd.json5`
 const supportUri = meta.supportUri ?? `https://github.com/${owner}/${repo}/issues`
 
 const payload = {

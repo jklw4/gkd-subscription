@@ -5,11 +5,22 @@
 
 ## 订阅链接
 
-在 GKD 的「订阅 → 添加」中填入：
+在 GKD 的「订阅 → 添加」中填入（优先用 jsDelivr，国内可直连）：
 
 ```txt
+https://cdn.jsdelivr.net/gh/jklw4/gkd-subscription@main/dist/gkd.json5
+```
+
+备选（jsDelivr 抽风时换用）：
+
+```txt
+https://ghfast.top/https://raw.githubusercontent.com/jklw4/gkd-subscription/main/dist/gkd.json5
 https://raw.githubusercontent.com/jklw4/gkd-subscription/main/dist/gkd.json5
 ```
+
+> 订阅文件里的 `updateUrl` 指向 jsDelivr。jsDelivr 对分支内容有约 12 小时缓存，
+> 每次推送后需要用 `https://purge.jsdelivr.net/gh/jklw4/gkd-subscription@main/dist/gkd.json5`
+> 刷一次缓存，手机端下拉才能立刻检测到新版本。
 
 当前内容：886 个应用 / 2074 个规则组（基底）+ 自定义规则 / 3 个全局规则组。
 
