@@ -1,0 +1,14 @@
+{
+  "name": "gkd-subscription",
+  "version": "1.0.0",
+  "private": true,
+  "description": "个人 GKD 订阅：以 AIsouler 规则为基底 + 自定义规则，构建为单文件订阅",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "sync-base": "node scripts/sync-base.mjs"
+  },
+  "dependencies": {
+    "json5": "^2.2.3"
+  }
+}

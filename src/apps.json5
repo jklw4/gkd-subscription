@@ -1,0 +1,20 @@
+// 自定义应用规则：在 AIsouler 基底之上追加 / 新增的规则
+// group 的 key 可省略，构建时自动分配，不会与基底冲突
+// 规则组命名使用「类别-说明」格式，类别需存在于订阅的 categories 中
+// 单条规则也可以直接写成选择器字符串
+//
+// 模板：
+// {
+//   id: 'com.example.app',
+//   name: '示例应用',
+//   groups: [
+//     {
+//       name: '开屏广告',
+//       rules: '[text*="跳过"][text.length<10][visibleToUser=true]',
+//       snapshotUrls: 'https://i.gkd.li/i/12345678',
+//     },
+//   ],
+// }
+{
+  apps: []
+}

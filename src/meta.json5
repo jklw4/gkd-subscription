@@ -1,0 +1,15 @@
+{
+  // 订阅 id：正整数且全局唯一，更新时 id 必须保持不变
+  id: 20261113,
+  name: 'Wayne的个人GKD订阅',
+  author: 'Wayne Liu',
+
+  // 发布仓库信息，构建脚本据此生成 updateUrl / supportUri
+  owner: 'jklw4',
+  repo: 'gkd-subscription',
+  branch: 'main',
+
+  // 额外的规则类别（基底中已有的类别无需重复声明）
+  // 格式：{ key: 数字, name: '类别名', enable: 是否默认开启 }
+  extraCategories: [],
+}
