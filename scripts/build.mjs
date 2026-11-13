@@ -108,21 +108,11 @@ const updateUrl = `${mirror}${rawBase}/gkd.json5`
 const checkUpdateUrl = `${mirror}${rawBase}/gkd.version.json5`
 const supportUri = meta.supportUri ?? `https://github.com/${owner}/${repo}/issues`
 
+// 哈希覆盖全部订阅内容（含元信息），任何字段变化都会让 version 自增，
+// 避免「内容变了但 version 不变」导致客户端拉不到更新
 const payload = {
-  apps,
-  globalGroups,
-  categories,
-}
-const hash = crypto.createHash('sha256').update(JSON.stringify(payload)).digest('hex')
-
-const stateFile = path.join(ROOT, 'dist/.build-state.json')
-const prev = fs.existsSync(stateFile) ? JSON.parse(fs.readFileSync(stateFile, 'utf8')) : null
-const version = prev && prev.hash === hash ? prev.version : (prev?.version ?? 0) + 1
-
-const subscription = {
   id: meta.id,
   name: meta.name,
-  version,
   author: meta.author,
   updateUrl,
   checkUpdateUrl,
@@ -131,6 +121,13 @@ const subscription = {
   globalGroups,
   apps,
 }
+const hash = crypto.createHash('sha256').update(JSON.stringify(payload)).digest('hex')
+
+const stateFile = path.join(ROOT, 'dist/.build-state.json')
+const prev = fs.existsSync(stateFile) ? JSON.parse(fs.readFileSync(stateFile, 'utf8')) : null
+const version = prev && prev.hash === hash ? prev.version : (prev?.version ?? 0) + 1
+
+const subscription = { ...payload, version }
 
 if (errors.length) {
   console.error('构建失败：')

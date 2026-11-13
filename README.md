@@ -19,7 +19,8 @@ https://gh-proxy.com/https://raw.githubusercontent.com/jklw4/gkd-subscription/ma
 https://raw.githubusercontent.com/jklw4/gkd-subscription/main/dist/gkd.json5
 ```
 
-> 订阅文件里的 `updateUrl` / `checkUpdateUrl` 也指向 ghfast 镜像，推送后手机下拉即可检测到新版本，无需刷 CDN 缓存。
+> 订阅文件里的 `updateUrl` / `checkUpdateUrl` 也指向 ghfast 镜像。镜像与 GitHub CDN 约有 5 分钟缓存，
+> 推送后等几分钟再在手机端下拉刷新即可检测到新版本。
 > 若镜像地址失效，改 `src/meta.json5` 的 `mirror` 后重新 build 推送即可。
 
 当前内容：886 个应用 / 2074 个规则组（基底）+ 自定义规则 / 3 个全局规则组。
