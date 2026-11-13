@@ -2,6 +2,9 @@
 // group 的 key 可省略，构建时自动分配，不会与基底冲突
 // 规则组命名使用「类别-说明」格式，类别需存在于订阅的 categories 中
 // 单条规则也可以直接写成选择器字符串
+// 关系操作符速查：A > B 表示 A 是 B 的父节点；A < B 表示 A 是 B 的子节点；
+//               A + B 表示 A 是 B 的前置兄弟；A - B 表示 A 是 B 的后置兄弟；
+//               A << B 表示 A 是 B 的祖先（子孙关系），末尾选择器才是点击目标
 {
   apps: [
     {
@@ -33,6 +36,50 @@
           fastQuery: true,
           rules: '[text="跳过"][visibleToUser=true]',
           snapshotUrls: ['https://i.gkd.li/i/34812142', 'https://i.gkd.li/i/34812148'],
+        },
+        {
+          name: '开屏广告-虚拟节点跳过',
+          desc: '燧光互动开屏广告：无 id/text，点右上角关闭或左下角跳过的小尺寸可点击节点',
+          activityIds: 'com.shark.jizhang.module.main.MainActivity',
+          matchTime: 10000,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          rules: '[vid="splashAdLayout"] << [clickable=true][childCount=0][width<200 && height<200][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/34814297',
+        },
+      ],
+    },
+    {
+      id: 'com.sina.weibo',
+      name: '微博',
+      groups: [
+        {
+          name: '局部广告-悬浮红包',
+          desc: '关闭首页右下角悬浮的红包领取浮窗',
+          activityIds: 'com.sina.weibo.MainTabActivity',
+          matchTime: 10000,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          fastQuery: true,
+          rules: '[vid="root_rl"] > [vid="close"][clickable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/34814292',
+        },
+      ],
+    },
+    {
+      id: 'com.smzdm.client.android',
+      name: '什么值得买',
+      groups: [
+        {
+          name: '功能类-关闭首页引导',
+          desc: '关闭首页新样式引导弹窗（我知道了）',
+          activityIds: 'com.smzdm.client.android.app.home.newstyle.MainActivity',
+          matchTime: 10000,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          fastQuery: true,
+          rules: '[text="我知道了"][clickable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/34814287',
         },
       ],
     },
