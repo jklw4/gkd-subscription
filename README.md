@@ -5,22 +5,22 @@
 
 ## 订阅链接
 
-在 GKD 的「订阅 → 添加」中填入（优先用 jsDelivr，国内可直连）：
-
-```txt
-https://cdn.jsdelivr.net/gh/jklw4/gkd-subscription@main/dist/gkd.json5
-```
-
-备选（jsDelivr 抽风时换用）：
+在 GKD 的「订阅 → 添加」中填入（ghfast 镜像，实时回源，国内可直连）：
 
 ```txt
 https://ghfast.top/https://raw.githubusercontent.com/jklw4/gkd-subscription/main/dist/gkd.json5
+```
+
+备选（镜像失效时换用，jsDelivr 分支内容有约 12 小时缓存）：
+
+```txt
+https://cdn.jsdelivr.net/gh/jklw4/gkd-subscription@main/dist/gkd.json5
+https://gh-proxy.com/https://raw.githubusercontent.com/jklw4/gkd-subscription/main/dist/gkd.json5
 https://raw.githubusercontent.com/jklw4/gkd-subscription/main/dist/gkd.json5
 ```
 
-> 订阅文件里的 `updateUrl` 指向 jsDelivr。jsDelivr 对分支内容有约 12 小时缓存，
-> 每次推送后需要用 `https://purge.jsdelivr.net/gh/jklw4/gkd-subscription@main/dist/gkd.json5`
-> 刷一次缓存，手机端下拉才能立刻检测到新版本。
+> 订阅文件里的 `updateUrl` / `checkUpdateUrl` 也指向 ghfast 镜像，推送后手机下拉即可检测到新版本，无需刷 CDN 缓存。
+> 若镜像地址失效，改 `src/meta.json5` 的 `mirror` 后重新 build 推送即可。
 
 当前内容：886 个应用 / 2074 个规则组（基底）+ 自定义规则 / 3 个全局规则组。
 

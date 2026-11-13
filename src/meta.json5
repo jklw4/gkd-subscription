@@ -8,6 +8,8 @@
   owner: 'jklw4',
   repo: 'gkd-subscription',
   branch: 'main',
+  // 更新链路使用的 Raw 镜像（实时回源、带缓存头），可换成 'https://gh-proxy.com/' 等
+  mirror: 'https://ghfast.top/',
 
   // 额外的规则类别（基底中已有的类别无需重复声明）
   // 格式：{ key: 数字, name: '类别名', enable: 是否默认开启 }

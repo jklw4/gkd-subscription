@@ -100,8 +100,12 @@ const globalGroups = mergeGroups([...(base.globalGroups ?? [])], customGlobal, '
 const owner = meta.owner
 const repo = meta.repo
 const branch = meta.branch ?? 'main'
-// raw.githubusercontent.com 在国内网络经常不可达，主链路走 jsDelivr（每次推送后需 purge 缓存）
-const updateUrl = `https://cdn.jsdelivr.net/gh/${owner}/${repo}@${branch}/dist/gkd.json5`
+// raw.githubusercontent.com 在国内经常不可达；jsDelivr 分支缓存又无法可靠刷新，
+// 因此更新链路默认走镜像代理（实时回源，无缓存），可在 meta.mirror 中替换镜像
+const rawBase = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/dist`
+const mirror = meta.mirror ?? 'https://ghfast.top/'
+const updateUrl = `${mirror}${rawBase}/gkd.json5`
+const checkUpdateUrl = `${mirror}${rawBase}/gkd.version.json5`
 const supportUri = meta.supportUri ?? `https://github.com/${owner}/${repo}/issues`
 
 const payload = {
