@@ -91,6 +91,12 @@ dist/.build-state.json    内容哈希与版本号，保证内容不变时 versi
 
 `id` 固定为 `20261113`，不要修改，否则 GKD 会认为是一个新订阅。
 
+## 常见问题
+
+- `git push` 报 `SSL_ERROR_SYSCALL` / `Connection was reset`：本机 OpenSSL 走 GitHub 不稳定，改用
+  `git -c http.sslBackend=schannel push`。
+- 手机下拉后没更新：镜像与 GitHub CDN 有约 5 分钟缓存；确认 `dist/gkd.version.json5` 的 `version` 已递增。
+
 ## 来源与声明
 
 - 规则基底来自 [AIsouler/GKD_subscription](https://github.com/AIsouler/GKD_subscription)，其声明「禁止在国内平台传播 / 仅供本人学习使用」，
