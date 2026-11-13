@@ -2,19 +2,39 @@
 // group 的 key 可省略，构建时自动分配，不会与基底冲突
 // 规则组命名使用「类别-说明」格式，类别需存在于订阅的 categories 中
 // 单条规则也可以直接写成选择器字符串
-//
-// 模板：
-// {
-//   id: 'com.example.app',
-//   name: '示例应用',
-//   groups: [
-//     {
-//       name: '开屏广告',
-//       rules: '[text*="跳过"][text.length<10][visibleToUser=true]',
-//       snapshotUrls: 'https://i.gkd.li/i/12345678',
-//     },
-//   ],
-// }
 {
-  apps: []
+  apps: [
+    {
+      id: 'com.taou.maimai',
+      name: '脉脉',
+      groups: [
+        {
+          name: '开屏广告-关闭按钮',
+          desc: '点击右上角关闭按钮跳过开屏广告',
+          matchTime: 10000,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          fastQuery: true,
+          rules: '[vid="adshow_close"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/34812137',
+        },
+      ],
+    },
+    {
+      id: 'com.shark.jizhang',
+      name: '鲨鱼记账',
+      groups: [
+        {
+          name: '开屏广告-跳过',
+          desc: '点击左下角跳过按钮跳过开屏广告',
+          matchTime: 10000,
+          actionMaximum: 1,
+          resetMatch: 'app',
+          fastQuery: true,
+          rules: '[text="跳过"][visibleToUser=true]',
+          snapshotUrls: ['https://i.gkd.li/i/34812142', 'https://i.gkd.li/i/34812148'],
+        },
+      ],
+    },
+  ],
 }
