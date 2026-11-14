@@ -48,6 +48,9 @@
           resetDelay: 1000,
           rules: [
             {
+              // 跳过按钮是广告 SDK 的悬浮层，坐标触摸会被上层广告容器截获；
+              // action='click' 优先给节点发无障碍点击（clickNode），不响应时才回退坐标点击
+              action: 'click',
               matches: '[clickable=true][childCount=0][width=120][height=120][visibleToUser=true] <<n [vid="splashAdLayout"]',
               position: { left: 'width * 0.2', top: 'height * 0.69' },
               snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842474'],
