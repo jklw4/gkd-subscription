@@ -48,12 +48,22 @@
           resetDelay: 1000,
           rules: [
             {
-              // 跳过按钮是广告 SDK 的悬浮层，坐标触摸会被上层广告容器截获；
-              // action='click' 优先给节点发无障碍点击（clickNode），不响应时才回退坐标点击
-              action: 'click',
+              // 快手系 NativeVideoAdView 开屏：点击注入无效，先试 400ms 长按
+              key: 0,
+              action: 'longClickCenter',
               matches: '[clickable=true][childCount=0][width=120][height=120][visibleToUser=true] <<n [vid="splashAdLayout"]',
-              position: { left: 'width * 0.2', top: 'height * 0.69' },
-              snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842474'],
+              position: { left: 'width * 0.5', top: 'height * 0.5' },
+              actionCd: 1500,
+              snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842640'],
+            },
+            {
+              // 长按后广告仍在（splashAdLayout 还在）才按返回键兜底，避免退出应用
+              preKeys: [0],
+              key: 1,
+              action: 'back',
+              matches: '[vid="splashAdLayout"][visibleToUser=true]',
+              actionDelay: 2000,
+              snapshotUrls: ['https://i.gkd.li/i/34842638', 'https://i.gkd.li/i/34842640'],
             },
           ],
           snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842310', 'https://i.gkd.li/i/34842314', 'https://i.gkd.li/i/34842321', 'https://i.gkd.li/i/34842322'],
