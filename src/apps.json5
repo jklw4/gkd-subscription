@@ -83,5 +83,36 @@
         },
       ],
     },
+    {
+      id: 'com.tencent.mm',
+      name: '微信',
+      groups: [
+        {
+          name: '分段广告-订阅号消息-信息流广告',
+          desc: '「广告∨」标签本身不可点击，反馈弹窗为 Flutter 绘制、没有无障碍节点，只能用相对坐标点击：先点广告标签，再点「不感兴趣/与我无关」。需实测',
+          activityIds: 'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
+          matchTime: 20000,
+          resetMatch: 'activity',
+          rules: [
+            {
+              key: 0,
+              name: '点击[广告]标签',
+              matches: '[desc="广告"][visibleToUser=true][childCount=0]',
+              position: { left: 'width * 0.88', top: 'height * 0.08' },
+              actionDelay: 500,
+            },
+            {
+              preKeys: [0],
+              key: 1,
+              name: '点击[不感兴趣/与我无关]',
+              matches: '[desc="广告"][visibleToUser=true][childCount=0]',
+              position: { left: 'width * 0.58', top: 'height * 0.45' },
+              actionDelay: 1200,
+            },
+          ],
+          snapshotUrls: ['https://i.gkd.li/i/34837464', 'https://i.gkd.li/i/34837468'],
+        },
+      ],
+    },
   ],
 }
