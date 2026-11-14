@@ -42,14 +42,15 @@
           desc: '视频/图文样式开屏广告：右上角「跳过」是可点击的 120x120 节点（无 id/text），左下角 96x42 那个是「广告」标识不要点',
           activityIds: 'com.shark.jizhang.module.main.MainActivity',
           matchTime: 10000,
-          actionMaximum: 1,
+          actionMaximum: 5,
+          actionCd: 1200,
           resetMatch: 'app',
           resetDelay: 1000,
           rules: [
             {
               matches: '[clickable=true][childCount=0][width=120][height=120][visibleToUser=true] <<n [vid="splashAdLayout"]',
-              position: { left: 'width * 0.25', top: 'height * 0.5' },
-              snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842321'],
+              position: { left: 'width * 0.2', top: 'height * 0.69' },
+              snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842474'],
             },
           ],
           snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842310', 'https://i.gkd.li/i/34842314', 'https://i.gkd.li/i/34842321', 'https://i.gkd.li/i/34842322'],
