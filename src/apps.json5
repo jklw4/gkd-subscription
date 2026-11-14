@@ -42,28 +42,18 @@
           desc: '视频/图文样式开屏广告：右上角「跳过」是可点击的 120x120 节点（无 id/text），左下角 96x42 那个是「广告」标识不要点',
           activityIds: 'com.shark.jizhang.module.main.MainActivity',
           matchTime: 10000,
-          actionMaximum: 5,
-          actionCd: 1200,
+          actionMaximum: 8,
+          actionCd: 1000,
           resetMatch: 'app',
           resetDelay: 1000,
           rules: [
             {
-              // 快手系 NativeVideoAdView 开屏：点击注入无效，先试 400ms 长按
-              key: 0,
-              action: 'longClickCenter',
-              matches: '[clickable=true][childCount=0][width=120][height=120][visibleToUser=true] <<n [vid="splashAdLayout"]',
-              position: { left: 'width * 0.5', top: 'height * 0.5' },
-              actionCd: 1500,
-              snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842640'],
-            },
-            {
-              // 长按后广告仍在（splashAdLayout 还在）才按返回键兜底，避免退出应用
-              preKeys: [0],
-              key: 1,
-              action: 'back',
+              // 快手系 NativeVideoAdView 开屏：跳过按钮无可读标识，改用屏幕绝对坐标点击（x/y 为屏幕坐标）
+              // 实测跳过胶囊圆心 (1092,388)，屏幕 1200x2670 → 0.91 / 0.1453
+              action: 'clickCenter',
               matches: '[vid="splashAdLayout"][visibleToUser=true]',
-              actionDelay: 2000,
-              snapshotUrls: ['https://i.gkd.li/i/34842638', 'https://i.gkd.li/i/34842640'],
+              position: { x: 'screenWidth * 0.91', y: 'screenHeight * 0.1453' },
+              snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842640'],
             },
           ],
           snapshotUrls: ['https://i.gkd.li/i/34814297', 'https://i.gkd.li/i/34841879', 'https://i.gkd.li/i/34842309', 'https://i.gkd.li/i/34842310', 'https://i.gkd.li/i/34842314', 'https://i.gkd.li/i/34842321', 'https://i.gkd.li/i/34842322'],
