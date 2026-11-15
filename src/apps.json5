@@ -125,5 +125,36 @@
         },
       ],
     },
+    {
+      id: 'com.tencent.mobileqq',
+      name: 'QQ',
+      groups: [
+        {
+          name: '分段广告-关闭反馈弹窗',
+          desc: '点「更多/广告」弹出反馈弹窗后，基底只认旧文案「关闭此条广告」，新版三种文案「关闭这条」「直接关闭」「反馈并关闭」都没覆盖，导致停在弹窗',
+          activityIds: 'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
+          matchTime: 10000,
+          actionMaximum: 3,
+          actionCd: 800,
+          resetMatch: 'activity',
+          fastQuery: true,
+          rules: [
+            {
+              key: 0,
+              name: '直接关闭 / 反馈并关闭',
+              matches: '[text="直接关闭" || text="反馈并关闭"][clickable=true]',
+              snapshotUrls: ['https://i.gkd.li/i/34865087', 'https://i.gkd.li/i/34865090'],
+            },
+            {
+              key: 1,
+              name: '关闭这条',
+              matches: '@[clickable=true] >(1,2) [text="关闭这条"]',
+              snapshotUrls: 'https://i.gkd.li/i/34865093',
+            },
+          ],
+          snapshotUrls: ['https://i.gkd.li/i/34865087', 'https://i.gkd.li/i/34865090', 'https://i.gkd.li/i/34865093'],
+        },
+      ],
+    },
   ],
 }
